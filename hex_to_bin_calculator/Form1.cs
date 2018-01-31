@@ -29,17 +29,25 @@ namespace hex_to_bin_calculator
             SaveMemoTimer.Tick += new EventHandler(TimerEven_SaveMemoTimer);
             SaveMemoTimer.Interval = 5000;
             SaveMemoTimer.Start();
-            
-            if (File.Exists(memo_path))
-            {
-                this.textBox2.Text = File.ReadAllText(memo_path);
-            }
+
+            RestoreMemo();
         }
 
         private void TimerEven_SaveMemoTimer(Object myObject, EventArgs myEventArgs)
         {
             SaveMemoTimer.Stop();
             SaveMemo();
+        }
+
+        private void RestoreMemo()
+        {
+            lock (SaveMemo_Lock)
+            {
+                if (File.Exists(memo_path))
+                {
+                    this.textBox2.Text = File.ReadAllText(memo_path);
+                }
+            }
         }
 
         private void SaveMemo()
@@ -177,6 +185,53 @@ namespace hex_to_bin_calculator
                 this.TopMost = true;
             else
                 this.TopMost = false;
+        }
+
+        private void set_to_zero()
+        {
+            textBox1.Text = "0x0";
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            string tmp = e.KeyCode.ToString();
+            if (tmp.CompareTo("Escape") == 0)
+            {
+                set_to_zero();
+            }
+        }
+
+        private void Form1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+        }
+
+        private void Form1_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files.Length == 1)
+            {
+                string fp = files[0];
+                string fn = Path.GetFileName(fp);
+                if(fn.IndexOf("_ho") > 0)
+                {
+                    lock (SaveMemo_Lock)
+                    {
+                        try
+                        {
+                            string bak_path = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + @"\";
+                            string bak_full_path = bak_path + "memo_" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".txt";
+                            File.Copy(memo_path, bak_full_path, false);
+                            File.Copy(fp, memo_path, true);
+                            RestoreMemo();
+                        }
+                        catch(Exception ee)
+                        {
+                            MessageBox.Show(ee.ToString());
+                        }
+                    }
+                }
+            }
         }
     }
 }

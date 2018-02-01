@@ -109,22 +109,46 @@ namespace hex_to_bin_calculator
             }
             return ba;
         }
+
+        private string get_raw_hex(string hex)
+        {
+            string input_text = hex.Replace("0x", "").Replace("0X", "").Replace("x", "").Replace("X", "");
+            if (input_text.Equals(""))
+                input_text = "0";
+
+            return input_text;
+        }
+
+        private string get_raw_dec(string dec)
+        {
+            if (textBox3.Text.Equals(""))
+                return "0";
+            else
+                return dec;
+        }
+
+        private bool hex_dec_is_same(string hex, string dec)
+        {
+            uint hex_uint32 = UInt32.Parse(get_raw_hex(hex), NumberStyles.HexNumber);
+            uint dec_uint32 = UInt32.Parse(get_raw_dec(dec), NumberStyles.Integer);
+
+            if (hex_uint32 == dec_uint32)
+                return true;
+            else
+                return false;
+        }
         
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                string input_text = this.textBox1.Text.Replace("0x", "").Replace("0X", "").Replace("x", "").Replace("X", "");
-                if (input_text.Equals(""))
-                    input_text = "0";
-
-                uint uint32 = UInt32.Parse(input_text, NumberStyles.HexNumber);
+                uint uint32 = UInt32.Parse(get_raw_hex(this.textBox1.Text), NumberStyles.HexNumber);
 
                 //use X8 to append 0 to prefix
                 BitArray_to_checkbox_gourp(ConvertHexToBitArray(uint32.ToString("X8")));
 
-                ignore_set_textBox1 = true;
-                this.textBox3.Text = uint32.ToString();
+                if (hex_dec_is_same(this.textBox1.Text, this.textBox3.Text) == false)
+                    this.textBox3.Text = uint32.ToString();
             }
             catch(Exception ee)
             {
@@ -155,23 +179,14 @@ namespace hex_to_bin_calculator
             Process.Start(System.IO.Path.GetDirectoryName(Application.ExecutablePath));
         }
 
-        bool ignore_set_textBox1 = false;
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                uint val = 0;
-                if (textBox3.Text.Equals(""))
-                    val = 0;
-                else
-                    val = Convert.ToUInt32(textBox3.Text);
+                uint val = Convert.ToUInt32(get_raw_dec(textBox3.Text));
 
-                if(ignore_set_textBox1)
-                {
-                    ignore_set_textBox1 = false;
-                    return;
-                }
-                this.textBox1.Text = "0x" + val.ToString("X8");
+                if(hex_dec_is_same(this.textBox1.Text, this.textBox3.Text) == false)
+                    this.textBox1.Text = "0x" + val.ToString("X8");
             }
             catch(Exception ee)
             {

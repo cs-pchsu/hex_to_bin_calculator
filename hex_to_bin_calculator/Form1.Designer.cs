@@ -77,7 +77,9 @@
             this.textBox1.Size = new System.Drawing.Size(175, 30);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "0x0";
+            this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // checkBox1
             // 
@@ -467,11 +469,11 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft JhengHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox2.Location = new System.Drawing.Point(198, 55);
+            this.textBox2.Location = new System.Drawing.Point(188, 55);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox2.Size = new System.Drawing.Size(518, 404);
+            this.textBox2.Size = new System.Drawing.Size(619, 404);
             this.textBox2.TabIndex = 33;
             this.textBox2.WordWrap = false;
             this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
@@ -484,7 +486,9 @@
             this.textBox3.Size = new System.Drawing.Size(175, 30);
             this.textBox3.TabIndex = 34;
             this.textBox3.Text = "0";
+            this.textBox3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox3_MouseClick);
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.textBox3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyUp);
             // 
             // textBox4
             // 
@@ -509,7 +513,7 @@
             // checkBox33
             // 
             this.checkBox33.AutoSize = true;
-            this.checkBox33.Location = new System.Drawing.Point(590, 23);
+            this.checkBox33.Location = new System.Drawing.Point(558, 23);
             this.checkBox33.Name = "checkBox33";
             this.checkBox33.Size = new System.Drawing.Size(85, 19);
             this.checkBox33.TabIndex = 37;
@@ -522,7 +526,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 474);
+            this.ClientSize = new System.Drawing.Size(819, 474);
             this.Controls.Add(this.checkBox33);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);

@@ -14,6 +14,13 @@ using System.Windows.Forms;
 
 namespace hex_to_bin_calculator
 {
+    struct valid_text
+    {
+        public int pos;
+        public string text;
+        public bool ignore;
+    }
+
     public partial class Form1 : Form
     {
         private System.Windows.Forms.Timer SaveMemoTimer;
@@ -21,6 +28,9 @@ namespace hex_to_bin_calculator
         const int MAX_BITS = 32;
         readonly string memo_path = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + @"\memo.txt";
         private Object SaveMemo_Lock = new Object();
+        private valid_text dec_valid_text = new valid_text();
+        private valid_text hex_valid_text = new valid_text();
+
         public Form1()
         {
             InitializeComponent();
@@ -30,7 +40,27 @@ namespace hex_to_bin_calculator
             SaveMemoTimer.Interval = 5000;
             SaveMemoTimer.Start();
 
+            save_hex_status();
+            save_dec_status();
+
             RestoreMemo();
+        }
+
+        private const int WM_NCLBUTTONDBLCLK = 0xA3;
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case WM_NCLBUTTONDBLCLK:
+                    min_the_form();
+                    return;
+            }
+            base.WndProc(ref m);
+        }
+
+        private void min_the_form()
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void TimerEven_SaveMemoTimer(Object myObject, EventArgs myEventArgs)
@@ -137,15 +167,55 @@ namespace hex_to_bin_calculator
             else
                 return false;
         }
+
+        private bool check_hex_is_valid(string hex)
+        {
+            try
+            {
+                uint uint32 = UInt32.Parse(get_raw_hex(hex), NumberStyles.HexNumber);
+                return true;
+            }
+            catch(Exception ee)
+            {
+                return false;
+            }
+        }
+
+        private void save_hex_status()
+        {
+            hex_valid_text.pos = this.textBox1.SelectionStart;
+            hex_valid_text.text = this.textBox1.Text;
+        }
+
+        private void restore_hex_status()
+        {
+            this.textBox1.Text = hex_valid_text.text;
+            this.textBox1.SelectionStart = hex_valid_text.pos;
+        }
         
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             try
             {
+                if (hex_valid_text.ignore)
+                {
+                    hex_valid_text.ignore = false;
+                    return;
+                }
+
+                if(check_hex_is_valid(this.textBox1.Text) == false)
+                {
+                    hex_valid_text.ignore = true;
+                    restore_hex_status();
+                    return;
+                }
+
                 uint uint32 = UInt32.Parse(get_raw_hex(this.textBox1.Text), NumberStyles.HexNumber);
 
                 //use X8 to append 0 to prefix
                 BitArray_to_checkbox_gourp(ConvertHexToBitArray(uint32.ToString("X8")));
+
+                save_hex_status();
 
                 if (hex_dec_is_same(this.textBox1.Text, this.textBox3.Text) == false)
                     this.textBox3.Text = uint32.ToString();
@@ -179,13 +249,53 @@ namespace hex_to_bin_calculator
             Process.Start(System.IO.Path.GetDirectoryName(Application.ExecutablePath));
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private bool check_dec_is_valid(string dec)
         {
             try
             {
                 uint val = Convert.ToUInt32(get_raw_dec(textBox3.Text));
+                return true;
+            }
+            catch (Exception ee)
+            {
+                return false;
+            }
+        }
 
-                if(hex_dec_is_same(this.textBox1.Text, this.textBox3.Text) == false)
+        private void save_dec_status()
+        {
+            dec_valid_text.pos = this.textBox3.SelectionStart;
+            dec_valid_text.text = this.textBox3.Text;
+        }
+
+        private void restore_dec_status()
+        {
+            this.textBox3.Text = dec_valid_text.text;
+            this.textBox3.SelectionStart = dec_valid_text.pos;
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dec_valid_text.ignore)
+                {
+                    dec_valid_text.ignore = false;
+                    return;
+                }
+
+                if (check_dec_is_valid(this.textBox3.Text) == false)
+                {
+                    dec_valid_text.ignore = true;
+                    restore_dec_status();
+                    return;
+                }
+
+                uint val = Convert.ToUInt32(get_raw_dec(textBox3.Text));
+
+                save_dec_status();
+
+                if (hex_dec_is_same(this.textBox1.Text, this.textBox3.Text) == false)
                     this.textBox1.Text = "0x" + val.ToString("X8");
             }
             catch(Exception ee)
@@ -246,6 +356,36 @@ namespace hex_to_bin_calculator
                         }
                     }
                 }
+            }
+        }
+
+        private void textBox3_MouseClick(object sender, MouseEventArgs e)
+        {
+            save_dec_status();
+        }
+
+        private void textBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            save_hex_status();
+        }
+
+        private void textBox3_KeyUp(object sender, KeyEventArgs e)
+        {
+            string instruct = e.KeyCode.ToString();
+            if (instruct.CompareTo("Left") == 0 ||
+                instruct.CompareTo("Right") == 0)
+            {
+                save_dec_status();
+            }
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            string instruct = e.KeyCode.ToString();
+            if (instruct.CompareTo("Left") == 0 ||
+                instruct.CompareTo("Right") == 0)
+            {
+                save_hex_status();
             }
         }
     }

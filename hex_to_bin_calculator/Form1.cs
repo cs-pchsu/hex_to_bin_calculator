@@ -226,10 +226,15 @@ namespace hex_to_bin_calculator
             }
         }
 
-        private void checkBox1_Click(object sender, EventArgs e)
+        private void response_checkbox_gourp_change()
         {
             uint uint32 = checkbox_gourp_to_uint();
             this.textBox1.Text = "0x" + uint32.ToString("X8");
+        }
+
+        private void checkBox1_Click(object sender, EventArgs e)
+        {
+            response_checkbox_gourp_change();
         }
 
         private void textBox2_KeyDown(object sender, KeyEventArgs e)
@@ -317,12 +322,24 @@ namespace hex_to_bin_calculator
             textBox1.Text = "0x0";
         }
 
+        bool shift_is_press = false;
+        bool ctrl_is_press = false;
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             string tmp = e.KeyCode.ToString();
             if (tmp.CompareTo("Escape") == 0)
             {
                 set_to_zero();
+            }
+
+            if(e.Modifiers == Keys.Control)
+            {
+                ctrl_is_press = true;
+            }
+
+            if (e.Modifiers == Keys.Shift)
+            {
+                shift_is_press = true;
             }
         }
 
@@ -386,6 +403,38 @@ namespace hex_to_bin_calculator
                 instruct.CompareTo("Right") == 0)
             {
                 save_hex_status();
+            }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers != Keys.Control)
+            {
+                ctrl_is_press = false;
+            }
+
+            if (e.Modifiers != Keys.Shift)
+            {
+                shift_is_press = false;
+            }
+        }
+
+        private void checkBox1_MouseEnter(object sender, EventArgs e)
+        {
+            CheckBox checkbox = (CheckBox)sender;
+            bool is_checked = checkbox.Checked;
+            if(ctrl_is_press)
+            {
+                checkbox.Checked = true;
+                if(is_checked != true)
+                    response_checkbox_gourp_change();
+            }
+
+            if (shift_is_press)
+            {
+                checkbox.Checked = false;
+                if (is_checked == true)
+                    response_checkbox_gourp_change();
             }
         }
     }

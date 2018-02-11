@@ -35,6 +35,11 @@ namespace hex_to_bin_calculator
         {
             InitializeComponent();
 
+            LinkLabel.Link link = new LinkLabel.Link();
+            this.linkLabel1.Text = "PCHSU's HEX Operation";
+            link.LinkData = "http://pc-hsu.blogspot.tw/2018/02/hex-operation.html";
+            linkLabel1.Links.Add(link);
+
             SaveMemoTimer = new System.Windows.Forms.Timer();
             SaveMemoTimer.Tick += new EventHandler(TimerEven_SaveMemoTimer);
             SaveMemoTimer.Interval = 5000;
@@ -436,6 +441,11 @@ namespace hex_to_bin_calculator
                 if (is_checked == true)
                     response_checkbox_gourp_change();
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(e.Link.LinkData as string);
         }
     }
 }

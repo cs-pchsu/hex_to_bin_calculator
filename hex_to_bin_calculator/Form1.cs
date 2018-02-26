@@ -24,12 +24,15 @@ namespace hex_to_bin_calculator
     public partial class Form1 : Form
     {
         private System.Windows.Forms.Timer SaveMemoTimer;
+        private System.Windows.Forms.Timer Periodic_Timer;
 
         const int MAX_BITS = 32;
         readonly string memo_path = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + @"\memo.txt";
         private Object SaveMemo_Lock = new Object();
         private valid_text dec_valid_text = new valid_text();
         private valid_text hex_valid_text = new valid_text();
+
+        private int mounse_status = 0;
 
         public Form1()
         {
@@ -45,8 +48,15 @@ namespace hex_to_bin_calculator
             SaveMemoTimer.Interval = 5000;
             SaveMemoTimer.Start();
 
+            Periodic_Timer = new System.Windows.Forms.Timer();
+            Periodic_Timer.Tick += new EventHandler(TimerEven_PeriodTimer);
+            Periodic_Timer.Interval = 100;
+            Periodic_Timer.Start();
+
             save_hex_status();
             save_dec_status();
+
+            this.textBox6.Text = "Select : " + "None";
 
             RestoreMemo();
         }
@@ -66,6 +76,38 @@ namespace hex_to_bin_calculator
         private void min_the_form()
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void check_mouse_status_string()
+        {
+            if (latest_mounse_status == mounse_status)
+                return;
+
+            latest_mounse_status = mounse_status;
+
+            string text = "Select : ";
+            if (mounse_status == 0)
+            {
+                this.textBox6.Text = text + "None";
+            }
+            else if (mounse_status == 1)
+            {
+                this.textBox6.Text = text + "Enable";
+            }
+            else if (mounse_status == 2)
+            {
+                this.textBox6.Text = text + "Disable";
+            }
+            else
+            {
+                this.textBox6.Text = text + "None";
+            }
+        }
+
+        private int latest_mounse_status = 0;
+        private void TimerEven_PeriodTimer(Object myObject, EventArgs myEventArgs)
+        {
+            check_mouse_status_string();
         }
 
         private void TimerEven_SaveMemoTimer(Object myObject, EventArgs myEventArgs)
@@ -239,6 +281,8 @@ namespace hex_to_bin_calculator
 
         private void checkBox1_Click(object sender, EventArgs e)
         {
+            mounse_status = 0;
+
             response_checkbox_gourp_change();
         }
 
@@ -327,24 +371,25 @@ namespace hex_to_bin_calculator
             textBox1.Text = "0x0";
         }
 
-        bool shift_is_press = false;
-        bool ctrl_is_press = false;
+        private void set_mouse_status()
+        {
+            mounse_status++;
+            if (mounse_status > 2)
+                mounse_status = 0;
+        }
+
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             string tmp = e.KeyCode.ToString();
             if (tmp.CompareTo("Escape") == 0)
             {
+                mounse_status = 0;
                 set_to_zero();
             }
 
-            if(e.Modifiers == Keys.Control)
+            if (e.Modifiers == Keys.Control)
             {
-                ctrl_is_press = true;
-            }
-
-            if (e.Modifiers == Keys.Shift)
-            {
-                shift_is_press = true;
+                set_mouse_status();
             }
         }
 
@@ -383,6 +428,8 @@ namespace hex_to_bin_calculator
 
         private void textBox3_MouseClick(object sender, MouseEventArgs e)
         {
+            mounse_status = 0;
+
             save_dec_status();
         }
 
@@ -411,31 +458,18 @@ namespace hex_to_bin_calculator
             }
         }
 
-        private void Form1_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Modifiers != Keys.Control)
-            {
-                ctrl_is_press = false;
-            }
-
-            if (e.Modifiers != Keys.Shift)
-            {
-                shift_is_press = false;
-            }
-        }
-
         private void checkBox1_MouseEnter(object sender, EventArgs e)
         {
             CheckBox checkbox = (CheckBox)sender;
             bool is_checked = checkbox.Checked;
-            if(ctrl_is_press)
+            if(mounse_status == 1)
             {
                 checkbox.Checked = true;
                 if(is_checked != true)
                     response_checkbox_gourp_change();
             }
 
-            if (shift_is_press)
+            if (mounse_status == 2)
             {
                 checkbox.Checked = false;
                 if (is_checked == true)
@@ -446,6 +480,26 @@ namespace hex_to_bin_calculator
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(e.Link.LinkData as string);
+        }
+
+        private void Form1_Click(object sender, EventArgs e)
+        {
+            mounse_status = 0;
+        }
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            mounse_status = 0;
+        }
+
+        private void textBox6_Click(object sender, EventArgs e)
+        {
+            set_mouse_status();
+        }
+
+        private void textBox2_Click(object sender, EventArgs e)
+        {
+            mounse_status = 0;
         }
     }
 }

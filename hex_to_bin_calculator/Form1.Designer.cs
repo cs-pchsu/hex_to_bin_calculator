@@ -68,6 +68,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.checkBox33 = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBox1
@@ -78,6 +79,7 @@
             this.textBox1.Size = new System.Drawing.Size(175, 30);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "0x0";
+            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
             this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
@@ -88,7 +90,7 @@
             this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.checkBox1.ForeColor = System.Drawing.Color.Black;
-            this.checkBox1.Location = new System.Drawing.Point(12, 65);
+            this.checkBox1.Location = new System.Drawing.Point(12, 90);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(70, 23);
             this.checkBox1.TabIndex = 1;
@@ -102,7 +104,7 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox2.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox2.Location = new System.Drawing.Point(12, 90);
+            this.checkBox2.Location = new System.Drawing.Point(12, 115);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(70, 23);
             this.checkBox2.TabIndex = 2;
@@ -116,7 +118,7 @@
             this.checkBox3.AutoSize = true;
             this.checkBox3.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox3.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox3.Location = new System.Drawing.Point(12, 115);
+            this.checkBox3.Location = new System.Drawing.Point(12, 140);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(70, 23);
             this.checkBox3.TabIndex = 3;
@@ -130,7 +132,7 @@
             this.checkBox4.AutoSize = true;
             this.checkBox4.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox4.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox4.Location = new System.Drawing.Point(12, 140);
+            this.checkBox4.Location = new System.Drawing.Point(12, 165);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(70, 23);
             this.checkBox4.TabIndex = 4;
@@ -144,7 +146,7 @@
             this.checkBox5.AutoSize = true;
             this.checkBox5.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox5.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox5.Location = new System.Drawing.Point(12, 174);
+            this.checkBox5.Location = new System.Drawing.Point(12, 199);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(70, 23);
             this.checkBox5.TabIndex = 5;
@@ -158,7 +160,7 @@
             this.checkBox6.AutoSize = true;
             this.checkBox6.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox6.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox6.Location = new System.Drawing.Point(12, 199);
+            this.checkBox6.Location = new System.Drawing.Point(12, 224);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(70, 23);
             this.checkBox6.TabIndex = 6;
@@ -172,7 +174,7 @@
             this.checkBox7.AutoSize = true;
             this.checkBox7.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox7.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox7.Location = new System.Drawing.Point(12, 224);
+            this.checkBox7.Location = new System.Drawing.Point(12, 249);
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(70, 23);
             this.checkBox7.TabIndex = 7;
@@ -186,7 +188,7 @@
             this.checkBox8.AutoSize = true;
             this.checkBox8.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox8.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox8.Location = new System.Drawing.Point(12, 249);
+            this.checkBox8.Location = new System.Drawing.Point(12, 274);
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(70, 23);
             this.checkBox8.TabIndex = 8;
@@ -200,7 +202,7 @@
             this.checkBox9.AutoSize = true;
             this.checkBox9.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox9.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox9.Location = new System.Drawing.Point(12, 283);
+            this.checkBox9.Location = new System.Drawing.Point(12, 308);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(70, 23);
             this.checkBox9.TabIndex = 9;
@@ -214,7 +216,7 @@
             this.checkBox10.AutoSize = true;
             this.checkBox10.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox10.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox10.Location = new System.Drawing.Point(12, 308);
+            this.checkBox10.Location = new System.Drawing.Point(12, 333);
             this.checkBox10.Name = "checkBox10";
             this.checkBox10.Size = new System.Drawing.Size(70, 23);
             this.checkBox10.TabIndex = 10;
@@ -228,7 +230,7 @@
             this.checkBox11.AutoSize = true;
             this.checkBox11.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox11.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox11.Location = new System.Drawing.Point(12, 333);
+            this.checkBox11.Location = new System.Drawing.Point(12, 358);
             this.checkBox11.Name = "checkBox11";
             this.checkBox11.Size = new System.Drawing.Size(71, 23);
             this.checkBox11.TabIndex = 11;
@@ -242,7 +244,7 @@
             this.checkBox12.AutoSize = true;
             this.checkBox12.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox12.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox12.Location = new System.Drawing.Point(12, 358);
+            this.checkBox12.Location = new System.Drawing.Point(12, 383);
             this.checkBox12.Name = "checkBox12";
             this.checkBox12.Size = new System.Drawing.Size(71, 23);
             this.checkBox12.TabIndex = 12;
@@ -256,7 +258,7 @@
             this.checkBox13.AutoSize = true;
             this.checkBox13.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox13.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox13.Location = new System.Drawing.Point(12, 392);
+            this.checkBox13.Location = new System.Drawing.Point(12, 417);
             this.checkBox13.Name = "checkBox13";
             this.checkBox13.Size = new System.Drawing.Size(71, 23);
             this.checkBox13.TabIndex = 13;
@@ -270,7 +272,7 @@
             this.checkBox14.AutoSize = true;
             this.checkBox14.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox14.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox14.Location = new System.Drawing.Point(12, 417);
+            this.checkBox14.Location = new System.Drawing.Point(12, 442);
             this.checkBox14.Name = "checkBox14";
             this.checkBox14.Size = new System.Drawing.Size(71, 23);
             this.checkBox14.TabIndex = 14;
@@ -284,7 +286,7 @@
             this.checkBox15.AutoSize = true;
             this.checkBox15.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox15.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox15.Location = new System.Drawing.Point(12, 442);
+            this.checkBox15.Location = new System.Drawing.Point(12, 467);
             this.checkBox15.Name = "checkBox15";
             this.checkBox15.Size = new System.Drawing.Size(71, 23);
             this.checkBox15.TabIndex = 15;
@@ -298,7 +300,7 @@
             this.checkBox16.AutoSize = true;
             this.checkBox16.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox16.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox16.Location = new System.Drawing.Point(12, 467);
+            this.checkBox16.Location = new System.Drawing.Point(12, 492);
             this.checkBox16.Name = "checkBox16";
             this.checkBox16.Size = new System.Drawing.Size(71, 23);
             this.checkBox16.TabIndex = 16;
@@ -312,7 +314,7 @@
             this.checkBox17.AutoSize = true;
             this.checkBox17.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox17.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox17.Location = new System.Drawing.Point(103, 65);
+            this.checkBox17.Location = new System.Drawing.Point(103, 90);
             this.checkBox17.Name = "checkBox17";
             this.checkBox17.Size = new System.Drawing.Size(71, 23);
             this.checkBox17.TabIndex = 17;
@@ -326,7 +328,7 @@
             this.checkBox18.AutoSize = true;
             this.checkBox18.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox18.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox18.Location = new System.Drawing.Point(103, 90);
+            this.checkBox18.Location = new System.Drawing.Point(103, 115);
             this.checkBox18.Name = "checkBox18";
             this.checkBox18.Size = new System.Drawing.Size(71, 23);
             this.checkBox18.TabIndex = 18;
@@ -340,7 +342,7 @@
             this.checkBox19.AutoSize = true;
             this.checkBox19.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox19.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox19.Location = new System.Drawing.Point(103, 115);
+            this.checkBox19.Location = new System.Drawing.Point(103, 140);
             this.checkBox19.Name = "checkBox19";
             this.checkBox19.Size = new System.Drawing.Size(71, 23);
             this.checkBox19.TabIndex = 19;
@@ -354,7 +356,7 @@
             this.checkBox20.AutoSize = true;
             this.checkBox20.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox20.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox20.Location = new System.Drawing.Point(103, 140);
+            this.checkBox20.Location = new System.Drawing.Point(103, 165);
             this.checkBox20.Name = "checkBox20";
             this.checkBox20.Size = new System.Drawing.Size(71, 23);
             this.checkBox20.TabIndex = 20;
@@ -368,7 +370,7 @@
             this.checkBox21.AutoSize = true;
             this.checkBox21.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox21.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox21.Location = new System.Drawing.Point(103, 174);
+            this.checkBox21.Location = new System.Drawing.Point(103, 199);
             this.checkBox21.Name = "checkBox21";
             this.checkBox21.Size = new System.Drawing.Size(71, 23);
             this.checkBox21.TabIndex = 21;
@@ -382,7 +384,7 @@
             this.checkBox22.AutoSize = true;
             this.checkBox22.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox22.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox22.Location = new System.Drawing.Point(103, 199);
+            this.checkBox22.Location = new System.Drawing.Point(103, 224);
             this.checkBox22.Name = "checkBox22";
             this.checkBox22.Size = new System.Drawing.Size(71, 23);
             this.checkBox22.TabIndex = 22;
@@ -396,7 +398,7 @@
             this.checkBox23.AutoSize = true;
             this.checkBox23.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox23.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox23.Location = new System.Drawing.Point(103, 224);
+            this.checkBox23.Location = new System.Drawing.Point(103, 249);
             this.checkBox23.Name = "checkBox23";
             this.checkBox23.Size = new System.Drawing.Size(71, 23);
             this.checkBox23.TabIndex = 23;
@@ -410,7 +412,7 @@
             this.checkBox24.AutoSize = true;
             this.checkBox24.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox24.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox24.Location = new System.Drawing.Point(103, 249);
+            this.checkBox24.Location = new System.Drawing.Point(103, 274);
             this.checkBox24.Name = "checkBox24";
             this.checkBox24.Size = new System.Drawing.Size(71, 23);
             this.checkBox24.TabIndex = 24;
@@ -424,7 +426,7 @@
             this.checkBox25.AutoSize = true;
             this.checkBox25.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox25.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox25.Location = new System.Drawing.Point(103, 283);
+            this.checkBox25.Location = new System.Drawing.Point(103, 308);
             this.checkBox25.Name = "checkBox25";
             this.checkBox25.Size = new System.Drawing.Size(71, 23);
             this.checkBox25.TabIndex = 25;
@@ -438,7 +440,7 @@
             this.checkBox26.AutoSize = true;
             this.checkBox26.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox26.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox26.Location = new System.Drawing.Point(103, 308);
+            this.checkBox26.Location = new System.Drawing.Point(103, 333);
             this.checkBox26.Name = "checkBox26";
             this.checkBox26.Size = new System.Drawing.Size(71, 23);
             this.checkBox26.TabIndex = 26;
@@ -452,7 +454,7 @@
             this.checkBox27.AutoSize = true;
             this.checkBox27.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox27.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox27.Location = new System.Drawing.Point(103, 333);
+            this.checkBox27.Location = new System.Drawing.Point(103, 358);
             this.checkBox27.Name = "checkBox27";
             this.checkBox27.Size = new System.Drawing.Size(71, 23);
             this.checkBox27.TabIndex = 27;
@@ -466,7 +468,7 @@
             this.checkBox28.AutoSize = true;
             this.checkBox28.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox28.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox28.Location = new System.Drawing.Point(103, 358);
+            this.checkBox28.Location = new System.Drawing.Point(103, 383);
             this.checkBox28.Name = "checkBox28";
             this.checkBox28.Size = new System.Drawing.Size(71, 23);
             this.checkBox28.TabIndex = 28;
@@ -480,7 +482,7 @@
             this.checkBox29.AutoSize = true;
             this.checkBox29.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox29.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox29.Location = new System.Drawing.Point(103, 392);
+            this.checkBox29.Location = new System.Drawing.Point(103, 417);
             this.checkBox29.Name = "checkBox29";
             this.checkBox29.Size = new System.Drawing.Size(71, 23);
             this.checkBox29.TabIndex = 29;
@@ -494,7 +496,7 @@
             this.checkBox30.AutoSize = true;
             this.checkBox30.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox30.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox30.Location = new System.Drawing.Point(103, 417);
+            this.checkBox30.Location = new System.Drawing.Point(103, 442);
             this.checkBox30.Name = "checkBox30";
             this.checkBox30.Size = new System.Drawing.Size(71, 23);
             this.checkBox30.TabIndex = 30;
@@ -508,7 +510,7 @@
             this.checkBox31.AutoSize = true;
             this.checkBox31.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox31.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox31.Location = new System.Drawing.Point(103, 442);
+            this.checkBox31.Location = new System.Drawing.Point(103, 467);
             this.checkBox31.Name = "checkBox31";
             this.checkBox31.Size = new System.Drawing.Size(71, 23);
             this.checkBox31.TabIndex = 31;
@@ -522,7 +524,7 @@
             this.checkBox32.AutoSize = true;
             this.checkBox32.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox32.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox32.Location = new System.Drawing.Point(103, 467);
+            this.checkBox32.Location = new System.Drawing.Point(103, 492);
             this.checkBox32.Name = "checkBox32";
             this.checkBox32.Size = new System.Drawing.Size(71, 23);
             this.checkBox32.TabIndex = 32;
@@ -534,19 +536,20 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft JhengHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox2.Location = new System.Drawing.Point(188, 55);
+            this.textBox2.Location = new System.Drawing.Point(188, 48);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox2.Size = new System.Drawing.Size(619, 435);
+            this.textBox2.Size = new System.Drawing.Size(619, 468);
             this.textBox2.TabIndex = 33;
             this.textBox2.WordWrap = false;
+            this.textBox2.Click += new System.EventHandler(this.textBox2_Click);
             this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
             // 
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft JhengHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox3.Location = new System.Drawing.Point(315, 12);
+            this.textBox3.Location = new System.Drawing.Point(309, 12);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(175, 30);
             this.textBox3.TabIndex = 34;
@@ -568,7 +571,7 @@
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Microsoft JhengHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox5.Location = new System.Drawing.Point(257, 12);
+            this.textBox5.Location = new System.Drawing.Point(251, 12);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(52, 30);
@@ -599,12 +602,25 @@
             this.linkLabel1.Text = "PCHSU\'s HEX Operation";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox6.Font = new System.Drawing.Font("Microsoft JhengHei", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.textBox6.Location = new System.Drawing.Point(12, 48);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(170, 30);
+            this.textBox6.TabIndex = 39;
+            this.textBox6.Text = "None";
+            this.textBox6.Click += new System.EventHandler(this.textBox6_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(813, 496);
+            this.ClientSize = new System.Drawing.Size(813, 522);
+            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.checkBox33);
             this.Controls.Add(this.textBox5);
@@ -651,11 +667,11 @@
             this.Name = "Form1";
             this.Text = "PCHSU\'s HEX Operation 1.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Click += new System.EventHandler(this.Form1_Click);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
             this.DoubleClick += new System.EventHandler(this.Form1_DoubleClick);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -702,6 +718,7 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.CheckBox checkBox33;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }
 

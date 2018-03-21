@@ -25,6 +25,7 @@ namespace hex_to_bin_calculator
     {
         private System.Windows.Forms.Timer SaveMemoTimer;
         private System.Windows.Forms.Timer Periodic_Timer;
+        private System.Windows.Forms.Timer ctrl_delay_Timer;
 
         const int MAX_BITS = 32;
         readonly string memo_path = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + @"\memo.txt";
@@ -52,6 +53,11 @@ namespace hex_to_bin_calculator
             Periodic_Timer.Tick += new EventHandler(TimerEven_PeriodTimer);
             Periodic_Timer.Interval = 100;
             Periodic_Timer.Start();
+
+            ctrl_delay_Timer = new System.Windows.Forms.Timer();
+            ctrl_delay_Timer.Tick += new EventHandler(ctrl_delay_Timer_handler);
+            ctrl_delay_Timer.Interval = 300;
+            ctrl_delay_Timer.Stop();
 
             save_hex_status();
             save_dec_status();
@@ -108,6 +114,12 @@ namespace hex_to_bin_calculator
         private void TimerEven_PeriodTimer(Object myObject, EventArgs myEventArgs)
         {
             check_mouse_status_string();
+        }
+
+        private void ctrl_delay_Timer_handler(Object myObject, EventArgs myEventArgs)
+        {
+            ctrl_delay_Timer.Stop();
+            set_mouse_status();
         }
 
         private void TimerEven_SaveMemoTimer(Object myObject, EventArgs myEventArgs)
@@ -389,7 +401,12 @@ namespace hex_to_bin_calculator
 
             if (e.Modifiers == Keys.Control)
             {
-                set_mouse_status();
+                ctrl_delay_Timer.Start();
+
+                /* if there is some hoykeys coming with ctrl, 
+                 * DO NOT need to change mouse status */
+                if (e.KeyCode != Keys.ControlKey)
+                    ctrl_delay_Timer.Stop();
             }
         }
 

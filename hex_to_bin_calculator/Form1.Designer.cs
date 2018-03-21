@@ -665,7 +665,7 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "PCHSU\'s HEX Operation 1.0";
+            this.Text = "PCHSU\'s HEX Operation 1.1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Click += new System.EventHandler(this.Form1_Click);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);

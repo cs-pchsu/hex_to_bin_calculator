@@ -277,7 +277,11 @@ namespace hex_to_bin_calculator
                 save_hex_status();
 
                 if (hex_dec_is_same(this.textBox1.Text, this.textBox3.Text) == false)
+                {
                     this.textBox3.Text = uint32.ToString();
+                    this.textBox3.SelectionStart = this.textBox3.Text.Length;
+                    save_dec_status();
+                }
             }
             catch(Exception ee)
             {
@@ -381,6 +385,8 @@ namespace hex_to_bin_calculator
         private void set_to_zero()
         {
             textBox1.Text = "0x0";
+            this.textBox1.SelectionStart = this.textBox1.Text.Length;
+            save_hex_status();
         }
 
         private void set_mouse_status()

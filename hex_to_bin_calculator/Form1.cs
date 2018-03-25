@@ -32,12 +32,15 @@ namespace hex_to_bin_calculator
         private Object SaveMemo_Lock = new Object();
         private valid_text dec_valid_text = new valid_text();
         private valid_text hex_valid_text = new valid_text();
+        private string raw_title = "PCHSU's HEX Operation 1.1";
 
         private int mounse_status = 0;
 
         public Form1()
         {
             InitializeComponent();
+
+            this.Text = raw_title;
 
             LinkLabel.Link link = new LinkLabel.Link();
             this.linkLabel1.Text = "PCHSU's HEX Operation";
@@ -251,6 +254,14 @@ namespace hex_to_bin_calculator
             this.textBox1.Text = hex_valid_text.text;
             this.textBox1.SelectionStart = hex_valid_text.pos;
         }
+
+        private void display_error_message(bool err)
+        {
+            if (err)
+                this.Text = raw_title + " (輸入錯誤)";
+            else
+                this.Text = raw_title;
+        }
         
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -266,8 +277,10 @@ namespace hex_to_bin_calculator
                 {
                     hex_valid_text.ignore = true;
                     restore_hex_status();
+                    display_error_message(true);
                     return;
                 }
+                display_error_message(false);
 
                 uint uint32 = UInt32.Parse(get_raw_hex(this.textBox1.Text), NumberStyles.HexNumber);
 
@@ -358,8 +371,10 @@ namespace hex_to_bin_calculator
                 {
                     dec_valid_text.ignore = true;
                     restore_dec_status();
+                    display_error_message(true);
                     return;
                 }
+                display_error_message(false);
 
                 uint val = Convert.ToUInt32(get_raw_dec(textBox3.Text));
 
@@ -387,6 +402,7 @@ namespace hex_to_bin_calculator
             textBox1.Text = "0x0";
             this.textBox1.SelectionStart = this.textBox1.Text.Length;
             save_hex_status();
+            display_error_message(false);
         }
 
         private void set_mouse_status()

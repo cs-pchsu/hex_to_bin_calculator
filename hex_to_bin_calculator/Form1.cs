@@ -68,6 +68,8 @@ namespace hex_to_bin_calculator
             this.textBox6.Text = "Select : " + "None";
 
             RestoreMemo();
+
+            set_to_zero();
         }
 
         private const int WM_NCLBUTTONDBLCLK = 0xA3;

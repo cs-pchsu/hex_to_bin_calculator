@@ -28,11 +28,13 @@ namespace hex_to_bin_calculator
         private System.Windows.Forms.Timer ctrl_delay_Timer;
 
         const int MAX_BITS = 32;
-        readonly string memo_path = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + @"\memo.txt";
+        const string const_memo_path = "memo_ho.txt";
+        string memo_path = const_memo_path;
+        readonly string memo_init = "cur.ini";
         private Object SaveMemo_Lock = new Object();
         private valid_text dec_valid_text = new valid_text();
         private valid_text hex_valid_text = new valid_text();
-        private string raw_title = "PCHSU's HEX Operation 1.1";
+        private string raw_title = "PCHSU's HEX Operation 1.2";
 
         private int mounse_status = 0;
 
@@ -41,6 +43,12 @@ namespace hex_to_bin_calculator
             InitializeComponent();
 
             this.Text = raw_title;
+
+            save_hex_status();
+            save_dec_status();
+
+            RestoreMemo();
+            display_error_message(false);
 
             LinkLabel.Link link = new LinkLabel.Link();
             this.linkLabel1.Text = "PCHSU's HEX Operation";
@@ -62,14 +70,50 @@ namespace hex_to_bin_calculator
             ctrl_delay_Timer.Interval = 300;
             ctrl_delay_Timer.Stop();
 
-            save_hex_status();
-            save_dec_status();
-
             this.textBox6.Text = "Select : " + "None";
 
-            RestoreMemo();
-
             set_to_zero();
+        }
+
+        private string write_and_check_to_memo_init(string path)
+        {
+            string get_relative_path = Path.GetFileName(path);
+
+            if (File.Exists(get_relative_path) == false)
+                get_relative_path = const_memo_path;
+
+            File.WriteAllText(memo_init, get_relative_path);
+
+            return get_relative_path;
+        }
+
+        private string set_cur_memo_path(string cur_memo)
+        {
+            write_and_check_to_memo_init(cur_memo);
+            return File.ReadAllText(memo_init);
+        }
+
+        private string get_and_check_cur_memo_path()
+        {
+            if(File.Exists(memo_init))
+            {
+                memo_path = File.ReadAllText(memo_init);
+            }
+            else
+            {
+                write_and_check_to_memo_init(const_memo_path);
+                memo_path = File.ReadAllText(memo_init);
+            }
+
+            if(File.Exists(memo_path) == false)
+            {
+                write_and_check_to_memo_init(const_memo_path);
+                memo_path = File.ReadAllText(memo_init);
+            }
+
+            display_error_message(false);
+
+            return memo_path;
         }
 
         private const int WM_NCLBUTTONDBLCLK = 0xA3;
@@ -137,7 +181,7 @@ namespace hex_to_bin_calculator
         {
             lock (SaveMemo_Lock)
             {
-                if (File.Exists(memo_path))
+                if (File.Exists(get_and_check_cur_memo_path()))
                 {
                     this.textBox2.Text = File.ReadAllText(memo_path);
                 }
@@ -148,7 +192,7 @@ namespace hex_to_bin_calculator
         {
             lock (SaveMemo_Lock)
             {
-                File.WriteAllText(memo_path, this.textBox2.Text);
+                File.WriteAllText(get_and_check_cur_memo_path(), this.textBox2.Text);
             }
         }
 
@@ -262,7 +306,13 @@ namespace hex_to_bin_calculator
             if (err)
                 this.Text = raw_title + " (輸入錯誤)";
             else
-                this.Text = raw_title;
+            {
+                string cur_memo_name = Path.GetFileName(memo_path);
+                string cur_memo_ext = Path.GetExtension(cur_memo_name);
+                string show_name = cur_memo_name.Replace(cur_memo_ext, "").Replace("_ho", "");
+
+                this.Text = raw_title + " ( " + show_name + " )";
+            }
         }
         
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -452,10 +502,8 @@ namespace hex_to_bin_calculator
                     {
                         try
                         {
-                            string bak_path = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + @"\";
-                            string bak_full_path = bak_path + "memo_" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".txt";
-                            File.Copy(memo_path, bak_full_path, false);
-                            File.Copy(fp, memo_path, true);
+                            SaveMemo();
+                            set_cur_memo_path(fp);
                             RestoreMemo();
                         }
                         catch(Exception ee)
@@ -541,6 +589,23 @@ namespace hex_to_bin_calculator
         private void textBox2_Click(object sender, EventArgs e)
         {
             mounse_status = 0;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", Directory.GetCurrentDirectory());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("notepad++.exe");
+            }
+            catch(Exception ee)
+            {
+                MessageBox.Show("開啟失敗，請確認有安裝Notepad++。");
+            }
         }
     }
 }

@@ -85,6 +85,8 @@
             this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.textBox1.MouseEnter += new System.EventHandler(this.textBox1_MouseEnter);
+            this.textBox1.MouseLeave += new System.EventHandler(this.textBox1_MouseLeave);
             // 
             // checkBox1
             // 
@@ -99,6 +101,7 @@
             this.checkBox1.Text = "Bit   0";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox1.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox2
@@ -113,6 +116,7 @@
             this.checkBox2.Text = "Bit   1";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox2.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox3
@@ -127,6 +131,7 @@
             this.checkBox3.Text = "Bit   2";
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox3.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox4
@@ -141,6 +146,7 @@
             this.checkBox4.Text = "Bit   3";
             this.checkBox4.UseVisualStyleBackColor = true;
             this.checkBox4.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox4.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox5
@@ -155,6 +161,7 @@
             this.checkBox5.Text = "Bit   4";
             this.checkBox5.UseVisualStyleBackColor = true;
             this.checkBox5.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox5.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox6
@@ -169,6 +176,7 @@
             this.checkBox6.Text = "Bit   5";
             this.checkBox6.UseVisualStyleBackColor = true;
             this.checkBox6.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox6.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox7
@@ -183,6 +191,7 @@
             this.checkBox7.Text = "Bit   6";
             this.checkBox7.UseVisualStyleBackColor = true;
             this.checkBox7.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox7.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox8
@@ -197,6 +206,7 @@
             this.checkBox8.Text = "Bit   7";
             this.checkBox8.UseVisualStyleBackColor = true;
             this.checkBox8.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox8.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox9
@@ -211,6 +221,7 @@
             this.checkBox9.Text = "Bit   8";
             this.checkBox9.UseVisualStyleBackColor = true;
             this.checkBox9.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox9.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox10
@@ -225,6 +236,7 @@
             this.checkBox10.Text = "Bit   9";
             this.checkBox10.UseVisualStyleBackColor = true;
             this.checkBox10.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox10.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox11
@@ -239,6 +251,7 @@
             this.checkBox11.Text = "Bit 10";
             this.checkBox11.UseVisualStyleBackColor = true;
             this.checkBox11.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox11.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox12
@@ -253,6 +266,7 @@
             this.checkBox12.Text = "Bit 11";
             this.checkBox12.UseVisualStyleBackColor = true;
             this.checkBox12.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox12.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox13
@@ -267,6 +281,7 @@
             this.checkBox13.Text = "Bit 12";
             this.checkBox13.UseVisualStyleBackColor = true;
             this.checkBox13.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox13.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox13.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox14
@@ -281,6 +296,7 @@
             this.checkBox14.Text = "Bit 13";
             this.checkBox14.UseVisualStyleBackColor = true;
             this.checkBox14.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox14.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox14.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox15
@@ -295,6 +311,7 @@
             this.checkBox15.Text = "Bit 14";
             this.checkBox15.UseVisualStyleBackColor = true;
             this.checkBox15.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox15.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox15.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox16
@@ -309,6 +326,7 @@
             this.checkBox16.Text = "Bit 15";
             this.checkBox16.UseVisualStyleBackColor = true;
             this.checkBox16.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox16.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox16.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox17
@@ -323,6 +341,7 @@
             this.checkBox17.Text = "Bit 16";
             this.checkBox17.UseVisualStyleBackColor = true;
             this.checkBox17.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox17.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox17.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox18
@@ -337,6 +356,7 @@
             this.checkBox18.Text = "Bit 17";
             this.checkBox18.UseVisualStyleBackColor = true;
             this.checkBox18.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox18.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox18.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox19
@@ -351,6 +371,7 @@
             this.checkBox19.Text = "Bit 18";
             this.checkBox19.UseVisualStyleBackColor = true;
             this.checkBox19.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox19.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox19.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox20
@@ -365,6 +386,7 @@
             this.checkBox20.Text = "Bit 19";
             this.checkBox20.UseVisualStyleBackColor = true;
             this.checkBox20.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox20.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox20.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox21
@@ -379,6 +401,7 @@
             this.checkBox21.Text = "Bit 20";
             this.checkBox21.UseVisualStyleBackColor = true;
             this.checkBox21.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox21.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox21.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox22
@@ -393,6 +416,7 @@
             this.checkBox22.Text = "Bit 21";
             this.checkBox22.UseVisualStyleBackColor = true;
             this.checkBox22.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox22.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox22.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox23
@@ -407,6 +431,7 @@
             this.checkBox23.Text = "Bit 22";
             this.checkBox23.UseVisualStyleBackColor = true;
             this.checkBox23.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox23.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox23.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox24
@@ -421,6 +446,7 @@
             this.checkBox24.Text = "Bit 23";
             this.checkBox24.UseVisualStyleBackColor = true;
             this.checkBox24.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox24.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox24.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox25
@@ -435,6 +461,7 @@
             this.checkBox25.Text = "Bit 24";
             this.checkBox25.UseVisualStyleBackColor = true;
             this.checkBox25.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox25.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox25.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox26
@@ -449,6 +476,7 @@
             this.checkBox26.Text = "Bit 25";
             this.checkBox26.UseVisualStyleBackColor = true;
             this.checkBox26.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox26.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox26.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox27
@@ -463,6 +491,7 @@
             this.checkBox27.Text = "Bit 26";
             this.checkBox27.UseVisualStyleBackColor = true;
             this.checkBox27.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox27.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox27.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox28
@@ -477,6 +506,7 @@
             this.checkBox28.Text = "Bit 27";
             this.checkBox28.UseVisualStyleBackColor = true;
             this.checkBox28.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox28.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox28.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox29
@@ -491,6 +521,7 @@
             this.checkBox29.Text = "Bit 28";
             this.checkBox29.UseVisualStyleBackColor = true;
             this.checkBox29.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox29.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox29.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox30
@@ -505,6 +536,7 @@
             this.checkBox30.Text = "Bit 29";
             this.checkBox30.UseVisualStyleBackColor = true;
             this.checkBox30.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox30.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox30.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox31
@@ -519,6 +551,7 @@
             this.checkBox31.Text = "Bit 30";
             this.checkBox31.UseVisualStyleBackColor = true;
             this.checkBox31.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox31.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox31.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // checkBox32
@@ -533,6 +566,7 @@
             this.checkBox32.Text = "Bit 31";
             this.checkBox32.UseVisualStyleBackColor = true;
             this.checkBox32.Click += new System.EventHandler(this.checkBox1_Click);
+            this.checkBox32.MouseDown += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseDown);
             this.checkBox32.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
             // 
             // textBox2
@@ -547,6 +581,8 @@
             this.textBox2.WordWrap = false;
             this.textBox2.Click += new System.EventHandler(this.textBox2_Click);
             this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
+            this.textBox2.MouseEnter += new System.EventHandler(this.textBox1_MouseEnter);
+            this.textBox2.MouseLeave += new System.EventHandler(this.textBox1_MouseLeave);
             // 
             // textBox3
             // 
@@ -559,6 +595,8 @@
             this.textBox3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox3_MouseClick);
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             this.textBox3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyUp);
+            this.textBox3.MouseEnter += new System.EventHandler(this.textBox1_MouseEnter);
+            this.textBox3.MouseLeave += new System.EventHandler(this.textBox1_MouseLeave);
             // 
             // textBox4
             // 

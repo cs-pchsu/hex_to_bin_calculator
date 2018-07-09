@@ -34,7 +34,7 @@ namespace hex_to_bin_calculator
         private Object SaveMemo_Lock = new Object();
         private valid_text dec_valid_text = new valid_text();
         private valid_text hex_valid_text = new valid_text();
-        private string raw_title = "PCHSU's HEX Operation 1.2";
+        private string raw_title = "PCHSU's HEX Operation 1.3";
 
         private int mounse_status = 0;
 
@@ -606,6 +606,22 @@ namespace hex_to_bin_calculator
             {
                 MessageBox.Show("開啟失敗，請確認有安裝Notepad++。");
             }
+        }
+
+        private void textBox1_MouseEnter(object sender, EventArgs e)
+        {
+            mounse_status = 0;
+        }
+
+        private void textBox1_MouseLeave(object sender, EventArgs e)
+        {
+            mounse_status = 0;
+        }
+
+        private void checkBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+                mounse_status = 0;
         }
     }
 }

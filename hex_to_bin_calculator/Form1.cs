@@ -357,6 +357,8 @@ namespace hex_to_bin_calculator
 
         private void textBox2_KeyDown(object sender, KeyEventArgs e)
         {
+            prevent_hotkey_from_effecting_mouse_status(e);
+
             SaveMemoTimer.Stop();
             SaveMemoTimer.Start();
         }
@@ -591,20 +593,33 @@ namespace hex_to_bin_calculator
             }
         }
 
-        private void textBox1_MouseEnter(object sender, EventArgs e)
-        {
-            mounse_status = 0;
-        }
-
-        private void textBox1_MouseLeave(object sender, EventArgs e)
-        {
-            mounse_status = 0;
-        }
-
         private void checkBox1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
                 mounse_status = 0;
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            prevent_hotkey_from_effecting_mouse_status(e);
+        }
+
+        private void textBox3_KeyDown(object sender, KeyEventArgs e)
+        {
+            prevent_hotkey_from_effecting_mouse_status(e);
+        }
+
+        private void prevent_hotkey_from_effecting_mouse_status(KeyEventArgs e)
+        {
+            foreach (System.Windows.Forms.Keys suit in (System.Windows.Forms.Keys[])Enum.GetValues(typeof(System.Windows.Forms.Keys)))
+            {
+                if ((e.KeyCode != Keys.ControlKey &&
+                    e.KeyCode != Keys.Control)
+                    && e.Control && e.KeyCode == suit)
+                {
+                    mounse_status = 0;
+                }
+            }
         }
     }
 }

@@ -35,7 +35,7 @@ namespace hex_to_bin_calculator
         private valid_text hex_valid_text = new valid_text();
         private string raw_title = "PCHSU's HEX Operation 2.0";
 
-		Mutex mutex = new Mutex(false, "hex_to_bin_cal_lock");
+        Mutex mutex = new Mutex(false, "hex_to_bin_cal_lock");
 
         private int mounse_status = 0;
 
@@ -101,7 +101,7 @@ namespace hex_to_bin_calculator
 
         private string get_and_check_cur_memo_path()
         {
-            if(File.Exists(memo_init))
+            if (File.Exists(memo_init))
             {
                 memo_path = File.ReadAllText(memo_init);
             }
@@ -111,7 +111,7 @@ namespace hex_to_bin_calculator
                 memo_path = File.ReadAllText(memo_init);
             }
 
-            if(File.Exists(memo_path) == false)
+            if (File.Exists(memo_path) == false)
             {
                 write_and_check_to_memo_init(const_memo_path);
                 memo_path = File.ReadAllText(memo_init);
@@ -180,21 +180,21 @@ namespace hex_to_bin_calculator
         private void RestoreMemo()
         {
             mutex.WaitOne();
-                if (File.Exists(get_and_check_cur_memo_path()))
-                {
-                    string cur_memo = this.textBox2.Text;
-                    string update_memo = File.ReadAllText(memo_path);
-                    if (cur_memo.Equals(update_memo) == false)
-                        this.textBox2.Text = update_memo;
-                }
+            if (File.Exists(get_and_check_cur_memo_path()))
+            {
+                string cur_memo = this.textBox2.Text;
+                string update_memo = File.ReadAllText(memo_path);
+                if (cur_memo.Equals(update_memo) == false)
+                    this.textBox2.Text = update_memo;
+            }
             mutex.ReleaseMutex();
         }
 
         private void SaveMemo()
         {
             mutex.WaitOne();
-                File.WriteAllText(get_and_check_cur_memo_path(), this.textBox2.Text);
-			mutex.ReleaseMutex();
+            File.WriteAllText(get_and_check_cur_memo_path(), this.textBox2.Text);
+            mutex.ReleaseMutex();
         }
 
         private uint checkbox_gourp_to_uint()
@@ -284,7 +284,7 @@ namespace hex_to_bin_calculator
                 uint uint32 = UInt32.Parse(get_raw_hex(hex), NumberStyles.HexNumber);
                 return true;
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 return false;
             }
@@ -315,7 +315,7 @@ namespace hex_to_bin_calculator
                 this.Text = raw_title + " ( " + show_name + " )";
             }
         }
-        
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             try
@@ -326,7 +326,7 @@ namespace hex_to_bin_calculator
                     return;
                 }
 
-                if(check_hex_is_valid(this.textBox1.Text) == false)
+                if (check_hex_is_valid(this.textBox1.Text) == false)
                 {
                     hex_valid_text.ignore = true;
                     restore_hex_status();
@@ -349,7 +349,7 @@ namespace hex_to_bin_calculator
                     save_dec_status();
                 }
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 MessageBox.Show(ee.ToString());
             }
@@ -438,7 +438,7 @@ namespace hex_to_bin_calculator
                 if (hex_dec_is_same(this.textBox1.Text, this.textBox3.Text) == false)
                     this.textBox1.Text = "0x" + val.ToString("X8");
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 MessageBox.Show(ee.ToString());
             }
@@ -446,7 +446,7 @@ namespace hex_to_bin_calculator
 
         private void checkBox33_Click(object sender, EventArgs e)
         {
-            if(this.checkBox33.Checked)
+            if (this.checkBox33.Checked)
                 this.TopMost = true;
             else
                 this.TopMost = false;
@@ -494,20 +494,20 @@ namespace hex_to_bin_calculator
             {
                 string fp = files[0];
                 string fn = Path.GetFileName(fp);
-                if(fn.IndexOf("_ho") > 0)
+                if (fn.IndexOf("_ho") > 0)
                 {
-					mutex.WaitOne();
-                        try
-                        {
-                            SaveMemo();
-                            set_cur_memo_path(fp);
-                            RestoreMemo();
-                        }
-                        catch(Exception ee)
-                        {
-                            MessageBox.Show(ee.ToString());
-                        }
-					mutex.ReleaseMutex();
+                    mutex.WaitOne();
+                    try
+                    {
+                        SaveMemo();
+                        set_cur_memo_path(fp);
+                        RestoreMemo();
+                    }
+                    catch (Exception ee)
+                    {
+                        MessageBox.Show(ee.ToString());
+                    }
+                    mutex.ReleaseMutex();
                 }
             }
         }
@@ -548,10 +548,10 @@ namespace hex_to_bin_calculator
         {
             CheckBox checkbox = (CheckBox)sender;
             bool is_checked = checkbox.Checked;
-            if(mounse_status == 1)
+            if (mounse_status == 1)
             {
                 checkbox.Checked = true;
-                if(is_checked != true)
+                if (is_checked != true)
                     response_checkbox_gourp_change();
             }
 
@@ -599,7 +599,7 @@ namespace hex_to_bin_calculator
             {
                 Process.Start("notepad++.exe");
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 MessageBox.Show("開啟失敗，請確認有安裝Notepad++。");
             }

@@ -9,6 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -30,10 +31,11 @@ namespace hex_to_bin_calculator
         const string const_memo_path = "memo_ho.txt";
         string memo_path = const_memo_path;
         readonly string memo_init = "cur.ini";
-        private Object SaveMemo_Lock = new Object();
         private valid_text dec_valid_text = new valid_text();
         private valid_text hex_valid_text = new valid_text();
-        private string raw_title = "PCHSU's HEX Operation 1.3";
+        private string raw_title = "PCHSU's HEX Operation 2.0";
+
+		Mutex mutex = new Mutex(false, "hex_to_bin_cal_lock");
 
         private int mounse_status = 0;
 
@@ -67,6 +69,16 @@ namespace hex_to_bin_calculator
             this.textBox6.Text = "Select : " + "None";
 
             set_to_zero();
+        }
+
+        private void form_status_from_active_to_inactive()
+        {
+            SaveMemo();
+        }
+
+        private void form_status_from_inactive_to_active()
+        {
+            RestoreMemo();
         }
 
         private string write_and_check_to_memo_init(string path)
@@ -167,21 +179,22 @@ namespace hex_to_bin_calculator
 
         private void RestoreMemo()
         {
-            lock (SaveMemo_Lock)
-            {
+            mutex.WaitOne();
                 if (File.Exists(get_and_check_cur_memo_path()))
                 {
-                    this.textBox2.Text = File.ReadAllText(memo_path);
+                    string cur_memo = this.textBox2.Text;
+                    string update_memo = File.ReadAllText(memo_path);
+                    if (cur_memo.Equals(update_memo) == false)
+                        this.textBox2.Text = update_memo;
                 }
-            }
+            mutex.ReleaseMutex();
         }
 
         private void SaveMemo()
         {
-            lock (SaveMemo_Lock)
-            {
+            mutex.WaitOne();
                 File.WriteAllText(get_and_check_cur_memo_path(), this.textBox2.Text);
-            }
+			mutex.ReleaseMutex();
         }
 
         private uint checkbox_gourp_to_uint()
@@ -483,8 +496,7 @@ namespace hex_to_bin_calculator
                 string fn = Path.GetFileName(fp);
                 if(fn.IndexOf("_ho") > 0)
                 {
-                    lock (SaveMemo_Lock)
-                    {
+					mutex.WaitOne();
                         try
                         {
                             SaveMemo();
@@ -495,7 +507,7 @@ namespace hex_to_bin_calculator
                         {
                             MessageBox.Show(ee.ToString());
                         }
-                    }
+					mutex.ReleaseMutex();
                 }
             }
         }
@@ -620,6 +632,16 @@ namespace hex_to_bin_calculator
                     mounse_status = 0;
                 }
             }
+        }
+
+        private void Form1_Deactivate(object sender, EventArgs e)
+        {
+            form_status_from_active_to_inactive();
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            form_status_from_inactive_to_active();
         }
     }
 }

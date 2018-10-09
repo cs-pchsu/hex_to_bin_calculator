@@ -726,6 +726,8 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "PCHSU\'s HEX Operation";
+            this.Activated += new System.EventHandler(this.Form1_Activated);
+            this.Deactivate += new System.EventHandler(this.Form1_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Click += new System.EventHandler(this.Form1_Click);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);

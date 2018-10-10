@@ -33,9 +33,9 @@ namespace hex_to_bin_calculator
         readonly string memo_init = "cur.ini";
         private valid_text dec_valid_text = new valid_text();
         private valid_text hex_valid_text = new valid_text();
-        private string raw_title = "PCHSU's HEX Operation 2.0";
+        private string raw_title = "PCHSU's HexCalor 2.0";
 
-        Mutex mutex = new Mutex(false, "hex_to_bin_cal_lock");
+        Mutex mutex = new Mutex(false, "HexCalor_lock");
 
         private int mounse_status = 0;
 
@@ -52,7 +52,7 @@ namespace hex_to_bin_calculator
             display_error_message(false);
 
             LinkLabel.Link link = new LinkLabel.Link();
-            this.linkLabel1.Text = "PCHSU's HEX Operation";
+            this.linkLabel1.Text = "PCHSU's HexCalor";
             link.LinkData = "http://pc-hsu.blogspot.tw/2018/02/hex-operation.html";
             linkLabel1.Links.Add(link);
 

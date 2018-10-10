@@ -618,7 +618,7 @@
             // 
             this.checkBox33.AutoSize = true;
             this.checkBox33.Font = new System.Drawing.Font("Microsoft JhengHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.checkBox33.Location = new System.Drawing.Point(537, 37);
+            this.checkBox33.Location = new System.Drawing.Point(548, 37);
             this.checkBox33.Name = "checkBox33";
             this.checkBox33.Size = new System.Drawing.Size(96, 23);
             this.checkBox33.TabIndex = 37;
@@ -630,12 +630,12 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft JhengHei", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.linkLabel1.Location = new System.Drawing.Point(640, 40);
+            this.linkLabel1.Location = new System.Drawing.Point(675, 41);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(167, 18);
+            this.linkLabel1.Size = new System.Drawing.Size(128, 18);
             this.linkLabel1.TabIndex = 38;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "PCHSU\'s HEX Operation";
+            this.linkLabel1.Text = "PCHSU\'s HexCalor";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // textBox6
@@ -725,7 +725,7 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "PCHSU\'s HEX Operation";
+            this.Text = "PCHSU\'s HexCalor";
             this.Activated += new System.EventHandler(this.Form1_Activated);
             this.Deactivate += new System.EventHandler(this.Form1_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

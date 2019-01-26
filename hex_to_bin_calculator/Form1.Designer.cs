@@ -81,10 +81,8 @@
             this.textBox1.Size = new System.Drawing.Size(175, 38);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "0x0";
-            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
             this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // checkBox1
@@ -578,7 +576,6 @@
             this.textBox2.Size = new System.Drawing.Size(619, 468);
             this.textBox2.TabIndex = 33;
             this.textBox2.WordWrap = false;
-            this.textBox2.Click += new System.EventHandler(this.textBox2_Click);
             this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
             // 
             // textBox3
@@ -591,7 +588,6 @@
             this.textBox3.Text = "0";
             this.textBox3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox3_MouseClick);
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            this.textBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyDown);
             this.textBox3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyUp);
             // 
             // textBox4

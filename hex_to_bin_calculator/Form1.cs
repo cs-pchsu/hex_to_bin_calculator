@@ -33,7 +33,7 @@ namespace hex_to_bin_calculator
         readonly string memo_init = "cur.ini";
         private valid_text dec_valid_text = new valid_text();
         private valid_text hex_valid_text = new valid_text();
-        private string raw_title = "PCHSU's HexCalor 2.0";
+        private string raw_title = "PCHSU's HexCalor 2.1";
 
         Mutex mutex = new Mutex(false, "HexCalor_lock");
 
@@ -150,18 +150,22 @@ namespace hex_to_bin_calculator
             if (mounse_status == 0)
             {
                 this.textBox6.Text = text + "None";
+                this.textBox6.BackColor = System.Drawing.SystemColors.Control;
             }
             else if (mounse_status == 1)
             {
                 this.textBox6.Text = text + "Enable";
+                this.textBox6.BackColor = System.Drawing.Color.Salmon;
             }
             else if (mounse_status == 2)
             {
                 this.textBox6.Text = text + "Disable";
+                this.textBox6.BackColor = System.Drawing.Color.MediumTurquoise;
             }
             else
             {
                 this.textBox6.Text = text + "None";
+                this.textBox6.BackColor = System.Drawing.SystemColors.Control;
             }
         }
 
@@ -304,7 +308,7 @@ namespace hex_to_bin_calculator
 
         private void display_error_message(bool err)
         {
-            if (err)
+            if (err && ignore_show_error_for_Oemtilde == false)
                 this.Text = raw_title + " (輸入錯誤)";
             else
             {
@@ -314,6 +318,9 @@ namespace hex_to_bin_calculator
 
                 this.Text = raw_title + " ( " + show_name + " )";
             }
+
+            if (ignore_show_error_for_Oemtilde)
+                ignore_show_error_for_Oemtilde = false;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -363,15 +370,11 @@ namespace hex_to_bin_calculator
 
         private void checkBox1_Click(object sender, EventArgs e)
         {
-            mounse_status = 0;
-
             response_checkbox_gourp_change();
         }
 
         private void textBox2_KeyDown(object sender, KeyEventArgs e)
         {
-            prevent_hotkey_from_effecting_mouse_status(e);
-
             SaveMemoTimer.Stop();
             SaveMemoTimer.Start();
         }
@@ -467,6 +470,7 @@ namespace hex_to_bin_calculator
                 mounse_status = 0;
         }
 
+        private bool ignore_show_error_for_Oemtilde = false;
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             string tmp = e.KeyCode.ToString();
@@ -476,9 +480,10 @@ namespace hex_to_bin_calculator
                 set_to_zero();
             }
 
-            if (e.Modifiers == Keys.Control)
+            if (e.Modifiers != Keys.Shift && tmp.CompareTo("Oemtilde") == 0)
             {
                 set_mouse_status();
+                ignore_show_error_for_Oemtilde = true;
             }
         }
 
@@ -514,8 +519,6 @@ namespace hex_to_bin_calculator
 
         private void textBox3_MouseClick(object sender, MouseEventArgs e)
         {
-            mounse_status = 0;
-
             save_dec_status();
         }
 
@@ -573,19 +576,9 @@ namespace hex_to_bin_calculator
             mounse_status = 0;
         }
 
-        private void textBox1_Click(object sender, EventArgs e)
-        {
-            mounse_status = 0;
-        }
-
         private void textBox6_Click(object sender, EventArgs e)
         {
             set_mouse_status();
-        }
-
-        private void textBox2_Click(object sender, EventArgs e)
-        {
-            mounse_status = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -609,29 +602,6 @@ namespace hex_to_bin_calculator
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
                 mounse_status = 0;
-        }
-
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            prevent_hotkey_from_effecting_mouse_status(e);
-        }
-
-        private void textBox3_KeyDown(object sender, KeyEventArgs e)
-        {
-            prevent_hotkey_from_effecting_mouse_status(e);
-        }
-
-        private void prevent_hotkey_from_effecting_mouse_status(KeyEventArgs e)
-        {
-            foreach (System.Windows.Forms.Keys suit in (System.Windows.Forms.Keys[])Enum.GetValues(typeof(System.Windows.Forms.Keys)))
-            {
-                if ((e.KeyCode != Keys.ControlKey &&
-                    e.KeyCode != Keys.Control)
-                    && e.Control && e.KeyCode == suit)
-                {
-                    mounse_status = 0;
-                }
-            }
         }
 
         private void Form1_Deactivate(object sender, EventArgs e)

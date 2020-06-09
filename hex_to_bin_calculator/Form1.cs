@@ -33,7 +33,7 @@ namespace hex_to_bin_calculator
         readonly string memo_init = "cur.ini";
         private valid_text dec_valid_text = new valid_text();
         private valid_text hex_valid_text = new valid_text();
-        private string raw_title = "PCHSU's HexCalor 2.1";
+        private string raw_title = "PCHSU's HexCalor 2.2";
 
         Mutex mutex = new Mutex(false, "HexCalor_lock");
 
@@ -267,7 +267,9 @@ namespace hex_to_bin_calculator
             if (textBox3.Text.Equals(""))
                 return "0";
             else
-                return dec;
+			{
+				return dec.Replace(",", "");
+			}
         }
 
         private bool hex_dec_is_same(string hex, string dec)

@@ -33,7 +33,7 @@ namespace hex_to_bin_calculator
         readonly string memo_init = "cur.ini";
         private valid_text dec_valid_text = new valid_text();
         private valid_text hex_valid_text = new valid_text();
-        private string raw_title = "PCHSU's HexCalor 2.2";
+        private string raw_title = "PCHSU's HexCalor 2.3";
 
         Mutex mutex = new Mutex(false, "HexCalor_lock");
 
@@ -67,6 +67,13 @@ namespace hex_to_bin_calculator
             Periodic_Timer.Start();
 
             this.textBox6.Text = "Select : " + "None";
+
+            for(int i = 1; i < 32; i++)
+            {
+                this.comboBox2.Items.Add(i.ToString());
+            }
+            comboBox2.SelectedIndex = 0;
+
 
             set_to_zero();
         }
@@ -614,6 +621,22 @@ namespace hex_to_bin_calculator
         private void Form1_Activated(object sender, EventArgs e)
         {
             form_status_from_inactive_to_active();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            int shift = this.comboBox2.SelectedIndex + 1;
+            uint uint32 = UInt32.Parse(get_raw_hex(this.textBox1.Text), NumberStyles.HexNumber);
+            uint32 = uint32 << shift;
+            this.textBox1.Text = "0x" + uint32.ToString("X8");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int shift = this.comboBox2.SelectedIndex + 1;
+            uint uint32 = UInt32.Parse(get_raw_hex(this.textBox1.Text), NumberStyles.HexNumber);
+            uint32 = uint32 >> shift;
+            this.textBox1.Text = "0x" + uint32.ToString("X8");
         }
     }
 }
